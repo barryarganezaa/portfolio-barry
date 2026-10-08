@@ -16,7 +16,7 @@ export function ProjectItem({ project, index }: ProjectItemProps) {
   const reversed = index % 2 === 1
 
   return (
-    <FadeUp className="border-t border-line-subtle py-14 lg:py-20">
+    <FadeUp className="border-t border-line-subtle py-10 lg:py-14">
       <article className="group grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
         <div className={cn('lg:col-span-7', reversed ? 'lg:order-2' : 'lg:order-1')}>
           <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-line-subtle bg-surface transition-colors duration-500 ease-cinematic group-hover:border-line">

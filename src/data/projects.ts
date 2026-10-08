@@ -1,4 +1,7 @@
 import type { Project } from '@/types/portfolio'
+import posWeb from '@/assets/projects/kanghape.webp'
+import saminaWeb from '@/assets/projects/samina1.webp'
+import simpemasApp from '@/assets/projects/simpemas.webp'
 
 export const projects: Project[] = [
   {
@@ -10,16 +13,18 @@ export const projects: Project[] = [
     role: 'Full-Stack Developer',
     period: 'Aug 2026 — Present',
     stack: ['React', 'Express'],
+    image: posWeb,
   },
   {
     slug: 'samina',
     title: 'SAMINA',
     subtitle: 'Internal Quality Audit Information System',
     description:
-      'Built role-based modules for auditors, auditees, and departments across the full audit lifecycle — desk evaluation, document uploads, PTK monitoring, and automated reporting — with SMTP notifications that kept every stakeholder on schedule.',
+      'Built role-based modules for SPM, auditors, auditees, and departments across the full audit lifecycle — desk evaluation, document uploads, PTK monitoring, and automated reporting — with SMTP notifications that kept every stakeholder on schedule.',
     role: 'Frontend Developer',
     period: 'Dec 2024 — Jul 2025',
     stack: ['Vue 3', 'Vuetify', 'Pinia', 'Laravel'],
+    image: saminaWeb,
   },
   {
     slug: 'simpemas',
@@ -30,5 +35,6 @@ export const projects: Project[] = [
     role: 'Mobile Developer',
     period: 'Jan 2024 — Sep 2024',
     stack: ['Flutter', 'Firebase'],
+    image: simpemasApp,
   },
 ]

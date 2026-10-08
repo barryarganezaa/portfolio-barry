@@ -22,34 +22,9 @@ export const fadeUp = (delay = 0, distance = 24): Variants => ({
   },
 })
 
-export const fadeIn = (delay = 0): Variants => ({
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: DURATION.medium, ease: EASE_CINEMATIC, delay },
-  },
-})
-
-export const scaleIn = (delay = 0): Variants => ({
-  hidden: { opacity: 0, scale: 0.98 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: DURATION.slow, ease: EASE_CINEMATIC, delay },
-  },
-})
-
 export const staggerContainer = (stagger = 0.08, delayChildren = 0): Variants => ({
   hidden: {},
   visible: {
     transition: { staggerChildren: stagger, delayChildren },
-  },
-})
-
-export const textReveal = (delay = 0): Variants => ({
-  hidden: { y: '110%' },
-  visible: {
-    y: '0%',
-    transition: { duration: DURATION.slow, ease: EASE_CINEMATIC, delay },
   },
 })

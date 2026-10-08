@@ -15,10 +15,10 @@ export function Experience() {
           titleId="experience-title"
         />
 
-        <div className="mt-16 lg:mt-24">
+        <div className="mt-12 lg:mt-16">
           {experience.map((entry) => (
             <Stagger key={`${entry.role}-${entry.period}`} className="border-t border-line-subtle">
-              <div className="grid gap-6 py-10 lg:grid-cols-12 lg:gap-8 lg:py-14">
+              <div className="grid gap-6 py-8 lg:grid-cols-12 lg:gap-8 lg:py-10">
                 <StaggerItem className="lg:col-span-3">
                   <p className="text-small text-fg">{entry.period}</p>
                   {entry.location ? (
@@ -51,7 +51,7 @@ export function Experience() {
           ))}
         </div>
 
-        <div className="mt-16 lg:mt-20">
+        <div className="mt-12 lg:mt-16">
           <h3 className="text-caption uppercase text-fg-subtle">Education</h3>
 
           {education.map((entry) => (

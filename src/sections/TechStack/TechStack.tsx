@@ -19,7 +19,7 @@ export function TechStack() {
 
         <Stagger
           stagger={0.06}
-          className="mt-16 grid gap-px overflow-hidden rounded-lg border border-line-subtle bg-line-subtle lg:mt-24 lg:grid-cols-6"
+          className="mt-12 grid gap-px overflow-hidden rounded-lg border border-line-subtle bg-line-subtle lg:mt-16 lg:grid-cols-6"
         >
           {skillGroups.map((group, index) => (
             <StaggerItem

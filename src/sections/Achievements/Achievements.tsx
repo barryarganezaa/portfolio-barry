@@ -21,7 +21,7 @@ export function Achievements() {
           titleId="achievements-title"
         />
 
-        <Stagger className="mt-16 lg:mt-24">
+        <Stagger className="mt-12 lg:mt-16">
           {achievements.map((achievement) => (
             <StaggerItem key={achievement.title} className="border-t border-line-subtle">
               <div className="grid gap-6 py-10 lg:grid-cols-12 lg:gap-8">
@@ -45,7 +45,7 @@ export function Achievements() {
           ))}
         </Stagger>
 
-        <div className="mt-16 lg:mt-20">
+        <div className="mt-12 lg:mt-16">
           <h3 className="text-caption uppercase text-fg-subtle">Certifications</h3>
 
           <ul className="mt-8 grid gap-x-16 gap-y-5 sm:grid-cols-2">

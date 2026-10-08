@@ -2,9 +2,9 @@ import { ArrowUpRight } from 'lucide-react'
 
 import { FadeUp } from '@/components/motion/FadeUp'
 import { Stagger, StaggerItem } from '@/components/motion/Stagger'
-import { TextReveal } from '@/components/motion/TextReveal'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
+import { SectionHeading } from '@/components/ui/SectionHeading'
 import { SocialIcon } from '@/components/ui/SocialIcon'
 import { socials } from '@/data/socials'
 
@@ -15,27 +15,16 @@ export function Contact() {
   return (
     <Section id="contact" labelledBy="contact-title">
       <Container>
-        <FadeUp>
-          <p className="flex items-center gap-4 text-caption uppercase text-fg-subtle">
-            <span aria-hidden="true">06</span>
-            <span aria-hidden="true" className="h-px w-8 bg-line" />
-            <span>Contact</span>
-          </p>
-        </FadeUp>
-
-        <h2 id="contact-title" className="mt-6 max-w-[46rem] font-display text-section text-balance text-fg">
-          <TextReveal>Let&apos;s build something meaningful.</TextReveal>
-        </h2>
-
-        <FadeUp delay={0.1}>
-          <p className="mt-8 max-w-[40rem] text-body text-fg-muted">
-            Available for freelance projects, collaborations, and full-time software development
-            opportunities.
-          </p>
-        </FadeUp>
+        <SectionHeading
+          index="06"
+          eyebrow="Contact"
+          title="Let's build something meaningful."
+          titleId="contact-title"
+          description="Available for freelance projects, collaborations, and full-time software development opportunities."
+        />
 
         {email ? (
-          <FadeUp delay={0.2} className="mt-14">
+          <FadeUp delay={0.2} className="mt-10">
             <a
               href={email.href}
               className="group inline-flex flex-wrap items-baseline gap-x-5 gap-y-3 font-display text-project tracking-tight text-fg"
@@ -55,7 +44,7 @@ export function Contact() {
 
         <Stagger
           stagger={0.06}
-          className="mt-16 flex flex-wrap gap-x-14 gap-y-6 border-t border-line-subtle pt-10"
+          className="mt-12 flex flex-wrap gap-x-14 gap-y-6 border-t border-line-subtle pt-8"
         >
           {profiles.map((social) => (
             <StaggerItem key={social.label}>

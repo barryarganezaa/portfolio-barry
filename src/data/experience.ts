@@ -6,8 +6,8 @@ export const experience: ExperienceEntry[] = [
     period: 'Dec 2025 — Present',
     location: 'Bandung, Indonesia',
     highlights: [
-      'Refactored existing client codebases to improve maintainability, readability, and load performance.',
-      'Debugged and resolved logic issues across web application modules.',
+      'Built a web-based point-of-sale system for a mobile and accessories store in BEC Bandung — fullstack, owning requirement analysis, system design, backend and frontend development, and deployment.',
+      'Delivered smaller client projects: fixed the product return workflow in a motorcycle workshop POS application, and analysed, designed, and built a web prototype of a book management system for a mobile library service.',
     ],
   },
   {
@@ -29,6 +29,6 @@ export const education: EducationEntry[] = [
     degree: 'Associate Degree in Informatics Engineering',
     period: '2022 — 2025',
     detail:
-      'GPA 3.21 · Coursework in Data Structures & Algorithms, Software Design, Mobile App Development, and Project Management',
+      'GPA 3.21 · Coursework in Data Structures & Algorithms, Software Design, Mobile App Development, Object-Oriented Programming, and Project Management',
   },
 ]

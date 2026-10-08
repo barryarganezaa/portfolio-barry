@@ -11,7 +11,7 @@ type SectionProps = {
 
 export function Section({ id, children, className, labelledBy }: SectionProps) {
   return (
-    <section id={id} aria-labelledby={labelledBy} className={cn('py-[clamp(80px,12vw,180px)]', className)}>
+    <section id={id} aria-labelledby={labelledBy} className={cn('py-[clamp(48px,5vw,88px)]', className)}>
       {children}
     </section>
   )

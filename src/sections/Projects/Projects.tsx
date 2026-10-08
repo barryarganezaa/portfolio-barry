@@ -16,7 +16,7 @@ export function Projects() {
           description="From internal systems to a nationally funded mobile app — built end to end, measured by outcomes."
         />
 
-        <div className="mt-16 lg:mt-24">
+        <div className="mt-12 lg:mt-16">
           {projects.map((project, index) => (
             <ProjectItem key={project.slug} project={project} index={index} />
           ))}
