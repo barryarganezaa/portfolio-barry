@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { Container } from '@/components/ui/Container'
 import { navItems } from '@/data/navigation'
@@ -11,6 +11,9 @@ import { DURATION, EASE_CINEMATIC } from '@/lib/motion'
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const wasOpen = useRef(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -24,8 +27,39 @@ export function Navbar() {
   useEffect(() => {
     if (!open) return
 
+    const getFocusable = () => {
+      const selector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+
+      return Array.from(headerRef.current?.querySelectorAll<HTMLElement>(selector) ?? []).filter(
+        (element) => element.getClientRects().length > 0,
+      )
+    }
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
+      if (event.key === 'Escape') {
+        setOpen(false)
+        return
+      }
+
+      if (event.key !== 'Tab') return
+
+      const focusable = getFocusable()
+      if (focusable.length === 0) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      const active = document.activeElement as HTMLElement | null
+      const insideHeader = active ? headerRef.current?.contains(active) : false
+
+      if (event.shiftKey) {
+        if (!insideHeader || active === first) {
+          event.preventDefault()
+          last.focus()
+        }
+      } else if (!insideHeader || active === last) {
+        event.preventDefault()
+        first.focus()
+      }
     }
 
     document.addEventListener('keydown', onKeyDown)
@@ -37,8 +71,26 @@ export function Navbar() {
     }
   }, [open])
 
+  useEffect(() => {
+    if (open) {
+      const frame = window.requestAnimationFrame(() => {
+        headerRef.current?.querySelector<HTMLElement>('#mobile-menu a[href]')?.focus()
+      })
+
+      wasOpen.current = true
+
+      return () => window.cancelAnimationFrame(frame)
+    }
+
+    if (wasOpen.current) {
+      wasOpen.current = false
+      toggleRef.current?.focus()
+    }
+  }, [open])
+
   return (
     <header
+      ref={headerRef}
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-colors duration-300 ease-cinematic',
         open
@@ -74,6 +126,7 @@ export function Navbar() {
 
         <button
           type="button"
+          ref={toggleRef}
           className="inline-flex size-10 items-center justify-center rounded-md text-fg transition-colors duration-200 ease-cinematic hover:text-fg-soft md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -88,6 +141,9 @@ export function Navbar() {
         {open ? (
           <motion.div
             id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
             className="fixed inset-x-0 top-20 bottom-0 bg-bg md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
