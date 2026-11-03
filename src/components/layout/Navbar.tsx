@@ -15,6 +15,23 @@ export function Navbar() {
   const toggleRef = useRef<HTMLButtonElement>(null)
   const wasOpen = useRef(false)
 
+  // Helper fungsi untuk scroll tanpa menambah # ke URL
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    setOpen(false)
+
+    // Mengambil nama ID section (misal "#work" atau "/work" -> "work")
+    const targetId = href.replace(/^[/#]+/, '')
+    const element = document.getElementById(targetId)
+
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+      
+      // Opsional: Jika ingin URL berubah menjadi /work (tanpa #) tanpa reload halaman
+      // window.history.pushState({}, '', `/${targetId}`)
+    }
+  }
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
 
@@ -104,7 +121,7 @@ export function Navbar() {
         <a
           href="#hero"
           className="font-display text-small tracking-tight text-fg transition-colors duration-200 ease-cinematic hover:text-fg-soft"
-          onClick={() => setOpen(false)}
+          onClick={(e) => scrollToSection(e, 'hero')}
         >
           {profile.name}
         </a>
@@ -116,6 +133,7 @@ export function Navbar() {
                 <a
                   href={item.href}
                   className="text-small text-fg-muted transition-colors duration-200 ease-cinematic hover:text-fg"
+                  onClick={(e) => scrollToSection(e, item.href)}
                 >
                   {item.label}
                 </a>
@@ -167,7 +185,7 @@ export function Navbar() {
                       <a
                         href={item.href}
                         className="block border-b border-line-subtle py-5 font-display text-3xl text-fg"
-                        onClick={() => setOpen(false)}
+                        onClick={(e) => scrollToSection(e, item.href)}
                       >
                         {item.label}
                       </a>
